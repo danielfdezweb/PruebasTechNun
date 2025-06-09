@@ -1,0 +1,6 @@
+body { font-family: sans-serif; margin: 0; padding: 0; }
+.header { display: flex; justify-content: space-between; padding: 1rem; background: #eee; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; padding: 1rem; }
+.card { border: 1px solid #ccc; padding: 1rem; text-align: center; text-decoration: none; color: inherit; }
+.details { display: flex; gap: 2rem; padding: 2rem; }
+img { max-width: 100%; }
