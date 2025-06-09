@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  similar-products-app:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - simulado
+    networks:
+      - app-network
+
+  simulado:
+    image: dalogax/simulado
+    ports:
+      - "3001:3001"
+    networks:
+      - app-network
+
+  influxdb:
+    image: influxdb:1.8
+    ports:
+      - "8086:8086"
+    networks:
+      - app-network
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  k6:
+    image: loadimpact/k6
+    volumes:
+      - ./scripts:/scripts
+    working_dir: /scripts
+    entrypoint: [""]
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
